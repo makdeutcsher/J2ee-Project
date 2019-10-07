@@ -1,0 +1,206 @@
+body {
+	 font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.about-resources-section {
+	padding: 100px;
+}
+
+.about-resources-section span {
+	font-size: 80px; 
+	color:#39b54a;
+	
+}
+
+.about-resources-section .title-icon-re {
+	font-size:15px;
+	line-height:1.5;
+	color:#3e3e3e;
+}
+
+.nagoya-important{
+	padding: 100px;
+}
+
+.nagoya-important span {
+	font-size: 80px; 
+	color:#39b54a;
+	
+}
+
+.nagoya-important .title-icon-re {
+	font-size:15px;
+	line-height:1.5;
+	color:#3e3e3e;
+}
+
+.nagoya-content{
+	color:white!important;
+	border: 1px solid white;
+	border-radius:5px;
+	padding:10px;
+	margin-bottom:15px;
+}
+
+#apa-section.ftco-counter .text span {
+	color:transparent;
+}
+#apa-section.ftco-counter .text span.number {
+	color:transparent;
+}
+
+#apa-section .img {
+	background-size: auto!important;
+}
+
+
+.glossary-section{
+	padding:80px;
+}
+
+#myInput {
+  background-image: url('/css/searchicon.png'); /* Add a search icon to input */
+  background-position: 10px 12px; /* Position the search icon */
+  background-repeat: no-repeat; /* Do not repeat the icon image */
+  width: 100%; /* Full-width */
+  font-size: 16px; /* Increase font-size */
+  padding: 12px 20px 12px 40px; /* Add some padding */
+  border: 1px solid #ddd; /* Add a grey border */
+ border-radius:5px;
+  margin-bottom: 12px; /* Add some space below the input */
+}
+
+#myUL {
+  /* Remove default list styling */
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#myUL li a {
+
+  text-decoration: none; /* Remove default text underline */
+  color:black;
+
+}
+.glossary-item-wrapper {
+	
+  border: 1px solid #ddd; /* Add a border to all links */
+  border-radius:5px;
+  margin-top: -1px; /* Prevent double borders */
+  margin-bottom: 10px; 
+  padding: 12px; /* Add some padding */
+  font-size: 18px; /* Increase the font-size */
+  color: black; /* Add a black text color */
+  display: block; /* Make it into a block element to fill the whole list */
+}
+
+.glossary-item-wrapper p {
+	font-size:13px;
+	line-height:1.5;
+	color:#3e3e3e;
+}
+
+#myUL li a:hover:not(.header) {
+  background-color: #eee; /* Add a hover effect to all links, except for headers */
+}
+
+
+
+/* login signup style*/
+
+.container-login .form-control {
+    width: 60%;
+    margin:  0 auto;
+}
+.container-login form {
+    margin-top: 30px ;
+}
+.container-login{
+    width: 50%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.signup-img{
+    /*background: url('http://localhost:5656/images/about-ressources1.jpg');*/
+    background-size: cover;
+    background-position: center;
+    display: none;
+
+}
+
+.login-signup-right .tabs-list{
+    margin-top: 10px!important;
+    font-size: 20px;
+    width: 90%;
+
+}
+.login-signup-right{
+    padding-bottom: 30px;
+}
+
+.login-signup-right img {
+    margin-top: 20px;
+}
+
+.login{
+    margin-top: 20px;
+}
+
+.login h1{
+    font-size:36px;
+    font-weight: 600;
+}
+
+
+
+.tab{
+    color: #989898;
+    padding-bottom: 8px;
+    padding-top: 23px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.29);
+
+    width: 110px;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.tab a{
+    text-decoration: none;
+    color: #989898;
+    /*border-bottom: 1px solid rgba(0, 0, 0, 0.29);*/
+
+}
+
+.tab-active a {
+    text-decoration: none;
+    color: #202124;
+
+}
+
+.tab-active{
+    border-bottom: 3px solid #39b54a;
+    color: #202124;
+
+}
+
+.tab:hover{
+    /*border-bottom: none;*/
+    background:#f7f9f9 ;
+    /*color: rgba(4, 4, 4, 0.69); ;*/
+    /*border-bottom: 3px solid rgba(255, 0, 11, 0.54);*/
+
+}
+
+.tabs-list{
+    margin: 0 auto;
+}
+
+.tagsinput .tag{
+	background: #5cb85c;
+}
+
+ 

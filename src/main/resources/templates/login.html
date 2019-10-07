@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="fragments/head :: head (title = 'SmartGen - Login')"></head>
+
+<body data-spy="scroll" data-target=".site-navbar-target"
+	data-offset="300">
+
+
+	
+	<section class="ftco-section">
+		<div class="container-login">
+			<div class="row">
+
+				<div class="col-12 col-lg-12 login-signup-right ">
+					<div class="text-center">
+						<a href="/"><img id="logo-img" src="images/logo_in_line.svg" width="110"   alt=""/> </a>
+					</div>
+					<br />
+					<div class="text-center tabs-list ">
+						<div class="text-center">
+							<small style="font-size:14px"> Create your account <strong>now</strong>!  </small>
+						</div>
+						<div class="row">
+							<div class=" col-6 tab tab-active" >
+								<a href='/login'>
+									<p class="">
+										Login
+									</p>
+								</a>
+
+							</div>
+							<div class=" col-6 tab">
+								<a href="/signup">
+									<p class="">
+										Register
+									</p>
+								</a>
+							</div>
+						</div>
+
+						
+						<div id="login_err" style="font-size:10px ; width:50%" class="d-none mx-auto mt-3 " >
+							<div  class="alert alert-danger" role="alert">
+								email already existed
+							</div>
+						</div>
+						
+					
+						<form class="" action="/login" method="post">
+							<div class="form-group">
+							  
+							  <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Entrez votre email" required>
+							  
+							</div>
+							<div class="form-group">
+							  
+							  <input type="password" class="form-control" name="password" id="passowrd" placeholder="Mot de pass" required>
+							</div>
+						
+							<button type="submit" class="btn btn-primary">Submit</button>
+						  </form>
+
+						<hr/>
+						<div>
+							<div class="row" style="font-size:10px">
+								<div class="col-12 col-md-8">
+									© SmartGen 2019 -All rights reserved
+								</div>
+
+								<div class="col-12 col-md-4">
+
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			<!-- 	<div style="background-image: url(images/bg_1.jpg)" class="col-12 col-lg-6 signup-img md-none">
+					
+				</div>  -->
+
+
+			</div>
+		</div>
+
+		
+	</section>
+
+
+	<script  th:inline="javascript">
+	/*<![CDATA[*/
+		
+		$(document).ready(function(){  
+		var loginError =[[${login_error}]]
+		var user =[[${user}]]
+	
+		
+		if (loginError!=null){
+			console.log(loginError)
+			$("#login_err").removeClass("d-none");
+			$("#login_err div").text(loginError)
+		}
+		
+  
+});  
+	
+	
+	
+	/*]]>*/
+	
+	</script>
+	
+</body>
+</html>

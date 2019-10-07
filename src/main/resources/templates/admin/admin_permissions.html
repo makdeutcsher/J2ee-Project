@@ -1,0 +1,340 @@
+ <!--
+=========================================================
+ Material Dashboard - v2.1.1
+=========================================================
+
+ Product Page: https://www.creative-tim.com/product/material-dashboard
+ Copyright 2019 Creative Tim (https://www.creative-tim.com)
+ Licensed under MIT (https://github.com/creativetimofficial/material-dashboard/blob/master/LICENSE.md)
+
+ Coded by Creative Tim
+
+=========================================================
+
+ The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
+
+ <!DOCTYPE html>
+ <html lang="en">
+ 
+ <head>
+   <meta charset="utf-8" />
+   <link rel="shortcut icon" type="image/png" href="/images/green-tea.png">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+   <title>
+	 Dashboard
+   </title>
+   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+	 name='viewport' /><!--     Fonts and icons     -->
+   <link href="/admin/css/font-awesome.min.css"  rel="stylesheet" >
+   <link href="/admin/css/some-icons.css"  rel="stylesheet" >
+   <!-- CSS Files -->
+   <link href="/admin/css/material-dashboard.css" rel="stylesheet" />
+ 
+	<!-- sytles of  multitage autocomplete -->
+   
+		 <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+		 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>
+		 <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+		 <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		 <link rel="stylesheet" href="/css/nice-select.min.css" />
+ 
+		 <script src="multitag/src/jquery.tagsinput-revisited.js"></script>
+		 <link rel="stylesheet" href="multitag/src/jquery.tagsinput-revisited.css" />
+		 
+			 <!-- Initilize JS variables from backend data reveived in the view -->
+ <script th:inline="javascript">
+	 /*<![CDATA[*/
+	 var users = [[${ users }]];
+	 var roles = [[${ roles }]];
+	 
+ 
+	 /*]]>*/
+ </script>
+ 
+ <style>/* select starting stylings ------------------------------*/
+.select {
+ 
+	position: relative;
+	width: 100%;
+}
+
+.select-text {
+	position: relative;
+	font-family: inherit;
+	background-color: transparent;
+	width: 100%;
+	padding: 10px 10px 10px 0;
+	font-size: 14px;
+	color:#495057;
+	border-radius: 0;
+	border: none;
+	border-bottom: 1px solid rgba(0,0,0, 0.12);
+}
+
+/* Remove focus */
+.select-text:focus {
+	outline: none;
+	border-bottom: 1px solid rgba(0,0,0, 0);
+}
+
+	/* Use custom arrow */
+.select .select-text {
+	appearance: none;
+	-webkit-appearance:none
+}
+
+.select:after {
+	position: absolute;
+	top: 18px;
+	right: 10px;
+	/* Styling the down arrow */
+	width: 0;
+	height: 0;
+	padding: 0;
+	content: '';
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-top: 6px solid rgba(0, 0, 0, 0.12);
+	pointer-events: none;
+}
+
+
+/* LABEL ======================================= */
+.
+/* active state */
+.select-text:focus ~ .select-label, .select-text:valid ~ .select-label {
+	color: #2F80ED;
+	top: -20px;
+	transition: 0.2s ease all;
+	font-size: 14px;
+}
+
+/* BOTTOM BARS ================================= */
+.select-bar {
+	position: relative;
+	display: block;
+	width: 100%;
+}
+
+.select-bar:before, .select-bar:after {
+	content: '';
+	height: 2px;
+	width: 0;
+	bottom: 1px;
+	position: absolute;
+	background: #4CAF50 ;
+	transition: 0.2s ease all;
+}
+
+.select-bar:before {
+	left: 50%;
+}
+
+.select-bar:after {
+	right: 50%;
+}
+
+/* active state */
+.select-text:focus ~ .select-bar:before, .select-text:focus ~ .select-bar:after {
+	width: 50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.select-highlight {
+	position: absolute;
+	height: 60%;
+	width: 100px;
+	top: 25%;
+	left: 0;
+	pointer-events: none;
+	opacity: 0.5;
+}
+ </style>
+	 
+ </head>
+ 
+ <body class="">
+   <div class="wrapper ">
+   	<div th:replace="fragments/admin_menu :: div"></div>
+    <div class="main-panel">
+	   <!-- Navbar -->
+	   <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+		 <div class="container-fluid">
+		   <div class="navbar-wrapper">
+			 <a class="navbar-brand" href="#pablo">Permissions</a>
+		   </div>
+		   <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
+			 aria-expanded="false" aria-label="Toggle navigation">
+			 <span class="sr-only">Toggle navigation</span>
+			 <span class="navbar-toggler-icon icon-bar"></span>
+			 <span class="navbar-toggler-icon icon-bar"></span>
+			 <span class="navbar-toggler-icon icon-bar"></span>
+		   </button>
+		   <div class="collapse navbar-collapse justify-content-end">
+			 <form class="navbar-form">
+			   <div class="input-group no-border">
+				 <input type="text" value="" class="form-control" placeholder="Search...">
+				 <button type="submit" class="btn btn-white btn-round btn-just-icon">
+				   <i class="material-icons">search</i>
+				   <div class="ripple-container"></div>
+				 </button>
+			   </div>
+			 </form>
+			 <ul th:replace="fragments/user_dropdown :: ul"></ul>
+		   </div>
+		 </div>
+	   </nav>
+	   <!-- End Navbar -->
+	   <div class="content">
+		 <div class="container-fluid">
+		   <div class="row">
+			 <div class="col-md-12">
+			   <div class="card">
+				 <div class="card-header card-header-success">
+				   <h4 class="card-title ">Admnistrateur</h4>
+				   <p class="card-category">Ajouter un admnistrateur et lui donner un role</p>
+				 </div>
+				 <div class="card-body">
+				   <div class="table-responsive">
+				   
+						<div id="email_err" style="font-size:10px ; width:50%" class="d-none mx-auto mt-3 " >
+							<div  class="alert alert-danger" role="alert">
+								L'email deja existe
+							</div>
+						</div>
+						
+						<div id="succces" style="font-size:10px ; width:50%" class="d-none mx-auto mt-3 " >
+							<div  class="alert alert-success" role="alert">
+								Utilisateur cree avec succes
+							</div>
+						</div>
+					 
+					     <form action="permissions" method="post">
+							
+							
+							<div class="form-group">
+							  <input type="text" class="form-control" id="role" name="nom" placeholder="Nom" required>
+							</div>
+							
+							<div class="form-group">
+							  <input type="text" class="form-control" id="role" name="prenom" placeholder="Prenom" required>
+							</div>
+							
+							<div class="form-group">
+							  <input type="text" class="form-control" id="role" name="email" placeholder="Email" required>
+							</div>
+							<div class="select">
+					<select class="select-text" id="roles" name="role"  required>
+						<option>Role </option>
+					</select>
+					<span class="select-highlight"></span>
+					<span class="select-bar"></span>
+					
+				</div>
+						
+							<div class="form-group">
+							  <input type="text" class="form-control" id="role" name="password" placeholder="password">
+							</div>
+							<button type="submit" class="btn btn-success pull-right" > Ajouter Admnistrateur
+							<div class="ripple-container"></div></button>
+						  </form>
+				   </div>
+				 </div>
+			   </div>
+			 </div>
+		   </div>
+		 </div>
+	   </div>
+	 </div>
+   </div>
+   
+  
+   <!--   Core JS Files   -->
+  
+   <script src="/admin/js/core/bootstrap-material-design.min.js"></script>
+   <script src="/admin/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+   <!-- Plugin for the momentJs  -->
+   <script src="/admin/js/plugins/moment.min.js"></script>
+   <!--  Plugin for Sweet Alert -->
+   <script src="/admin/js/plugins/sweetalert2.js"></script>
+   <!-- Forms Validations Plugin -->
+   <script src="/admin/js/plugins/jquery.validate.min.js"></script>
+   <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
+   <script src="/admin/js/plugins/jquery.bootstrap-wizard.js"></script>
+   <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+   <script src="/admin/js/plugins/bootstrap-selectpicker.js"></script>
+   <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
+   <script src="/admin/js/plugins/bootstrap-datetimepicker.min.js"></script>
+   <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
+   <script src="/admin/js/plugins/jquery.dataTables.min.js"></script>
+   <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
+   <script src="/admin/js/plugins/bootstrap-tagsinput.js"></script>
+   <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+   <script src="/admin/js/plugins/jasny-bootstrap.min.js"></script>
+   <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
+   <script src="/admin/js/plugins/fullcalendar.min.js"></script>
+   <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
+   <script src="/admin/js/plugins/jquery-jvectormap.js"></script>
+   <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+   <script src="/admin/js/plugins/nouislider.min.js"></script>
+   <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+   <!-- Library for adding dinamically elements -->
+   <script src="/admin/js/plugins/arrive.min.js"></script>
+   <!--  Google Maps Plugin    -->
+   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+   <!-- Chartist JS -->
+   <script src="/admin/js/plugins/chartist.min.js"></script>
+   <!--  Notifications Plugin    -->
+   <script src="/admin/js/plugins/bootstrap-notify.js"></script>
+   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+   <script src="/admin/js/material-dashboard.js?v=2.1.1" type="text/javascript"></script>
+   <script src="/js/jquery.nice-select.min.js"></script>
+ 
+
+  
+  <script type="text/javascript">
+  function fillSelect(data){
+	  
+  	$("tbody").empty()
+  	data.forEach(function (item) {
+  		console.log(item)
+  		$('#roles').append(`
+  				<option value=${item.name}>${item.name}</option>
+  		`);
+  	});
+  	setHandler();
+  }
+  fillSelect(roles);			
+</script>
+
+<script  th:inline="javascript">
+	/*<![CDATA[*/
+		
+		$(document).ready(function(){  
+			
+			var emailError =[[${error1}]]
+			var succces =[[${succces}]]
+			
+			if (emailError!=null){
+				console.log(emailError)
+				$("#email_err").removeClass("d-none");
+			}
+			
+			if (succces!=null){
+				console.log(succces)
+				$("#succces").removeClass("d-none");
+			}
+		});  
+	
+	
+	/*]]>*/
+	
+	</script>
+	
+	
+
+	
+		
+</body>
+</html>

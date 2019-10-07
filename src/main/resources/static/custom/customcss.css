@@ -1,0 +1,240 @@
+label.field {
+    border-radius: 2px;
+    color: #666;
+    display: block;
+    margin: 16px;
+    max-width: 300px;
+    padding: 8px;
+    opacity: 0;
+    position: relative;
+    transition-property: opacity;
+    z-index: 1;
+  }
+  label.field span {
+    color: inherit;
+    display: block;
+    font-size: 16px;
+    height: 20px;
+    line-height: 20px;
+    left: 9px;
+    pointer-events: none;
+    position: absolute;
+    top: 32px;
+    transform: scale(1) translateY(0);
+    transition-property: color, font-size, top;
+    z-index: 1;
+  }
+  label.field span.required::after {
+    color: inherit;
+    content: "*";
+    display: block;
+    height: 20px;
+    left: -20px;
+    line-height: 20px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 20px;
+  }
+  .error label.field span {
+    color: #F02318;
+  }
+  label.field .psuedo_select {
+    background: rgba(255, 255, 255, 0);
+    position: relative;
+    border-color: #666;
+    border-style: solid;
+    border-width: 0 0 2px 0;
+    color: #666;
+    cursor: pointer;
+    font-size: 20px;
+    height: 24px;
+    line-height: 24px;
+    margin: 24px 32px 0 0;
+    min-width: 250px;
+    padding-top: 24px;
+    outline: 0;
+    z-index: 1;
+  }
+  label.field .psuedo_select::after {
+    background: url("data:image/svg+xml;utf8,<svg fill='#666' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'> <path d='M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z'/> <path d='M0-.75h24v24H0z' fill='none'/> </svg>"), no-repeat;
+    content: "";
+    height: 24px;
+    width: 24px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition-property: background;
+  }
+  label.field .psuedo_select .selected {
+    height: 24px;
+    left: 1px;
+    line-height: 24px;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    transform: translateY(24px);
+    transition-property: opacity, transform;
+    will-change: transform;
+  }
+  label.field .psuedo_select ul {
+    background: #fff;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+    display: block;
+    height: 0;
+    list-style: none;
+    margin-top: 2px;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0 1px;
+    pointer-events: none;
+    transition-property: height, opacity;
+    width: 100%;
+    z-index: 2;
+  }
+  label.field .psuedo_select ul li {
+    height: 32px;
+    padding: 8px 4px;
+  }
+  label.field .deselect {
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: -1;
+  }
+  label.field.focused {
+    color: #007BED;
+  }
+  label.field.focused .psuedo_select {
+    border-color: #007BED;
+  }
+  label.field.focused .psuedo_select::after {
+    background: url("data:image/svg+xml;utf8,<svg fill='#007BED' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'> <path d='M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z'/> <path d='M0-.75h24v24H0z' fill='none'/> </svg>"), no-repeat;
+  }
+  label.field.focused .psuedo_select ul {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+
+  /* radio */
+
+  .radio {
+    margin: 16px 0;
+    display: block;
+    cursor: pointer;
+  }
+  .radio input {
+    display: none;
+  }
+  .radio input + span {
+    line-height: 22px;
+    height: 22px;
+    padding-left: 22px;
+    display: block;
+    position: relative;
+  }
+  .radio input + span:not(:empty) {
+    padding-left: 30px;
+  }
+  .radio input + span:before, .radio input + span:after {
+    content: '';
+    width: 22px;
+    height: 22px;
+    display: block;
+    border-radius: 50%;
+    left: 0;
+    top: 0;
+    position: absolute;
+  }
+  .radio input + span:before {
+    background: #D1D7E3;
+    transition: background 0.2s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 2);
+  }
+  .radio input + span:after {
+    background: #fff;
+    transform: scale(0.78);
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.4);
+  }
+  .radio input:checked + span:before {
+    transform: scale(1.04);
+    background: #75ED6F;
+  }
+  .radio input:checked + span:after {
+    transform: scale(0.4);
+    transition: transform 0.3s ease;
+  }
+  .radio:hover input + span:before {
+    transform: scale(0.92);
+  }
+  .radio:hover input + span:after {
+    transform: scale(0.74);
+  }
+  .radio:hover input:checked + span:after {
+    transform: scale(0.4);
+  }
+
+
+  /* Custom css */
+
+  .list-item-container{
+      padding: 20px;
+      box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.3);
+      margin-bottom: 30px;
+    }
+  .list-image{
+      max-width: 100px;
+  }
+
+  .list-image img{
+    height: 120px;
+    max-width: 120px;
+  }
+
+  .list-details{
+    height : 120px;
+  }
+
+  .list-details ul{
+      margin : 0px;
+      padding: 0px;
+      list-style-type: none;
+  }
+
+  .list-details ul li{
+      color: #1A1A1A;
+  }
+
+  .list-details ul li span{
+      margin: 0 2px;
+    }
+    .list-details .icon{
+        color : #75ED6F;
+  }
+
+  .state{
+      width: 80px;
+  }
+
+  .list-para{
+      margin-top: 30px;
+  }
+
+  .search-box{
+      padding: 0;
+      padding-right: 25px;
+      margin-bottom: 0;
+  }
+
+  .search-list{
+      margin: 0 !important;
+      margin-top: 16px !important;
+  }
+
+  .radio-container{
+      margin-top: 40px;
+  }
+
+  

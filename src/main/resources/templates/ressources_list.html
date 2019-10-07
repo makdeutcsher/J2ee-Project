@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head
+	th:replace="fragments/head :: head (title = 'SmartGen - Accès et Partage des Avantages')"></head>
+<!-- Initilize JS variables from backend data reveived in the view -->
+<script th:inline="javascript">
+	/*<![CDATA[*/
+	var classes = [[${ classes }]];
+	console.log(classes);
+	/*]]>*/
+</script>
+<style>
+
+/** Modal */
+.modal {
+	pointer-events: none;
+	opacity: 0;
+	transition: opacity 0.3s;
+	position: absolute;
+	top: 10px;
+	left: 0;
+	right: 0;
+	max-width: 90%;
+	height: 96vh;
+	margin: 0 auto;
+	padding: 30px;
+	background: #fff;
+	border-radius: 4px;
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.modal-close-btn {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	font-size: 20px;
+}
+
+/** Overlay */
+.overlay {
+	pointer-events: none;
+	opacity: 0;
+	transition: opacity 0.3s;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.3);
+}
+
+/** JS */
+.is-visible {
+	opacity: 1;
+	pointer-events: auto;
+	display: block;
+	position: fixed;
+}
+
+.cls-btn {
+	float: right;
+	margin-bottom: 20px;
+}
+
+.file-item {
+	background: #52e574;
+	border-radius: 2px;
+	height: 50px;
+	color: white;
+	cursor: pointer;
+	padding-top: 11px;
+	margin: 5px;
+}
+
+.file-item {
+	transition: 0.5s;
+	background: #52e574;
+	border-radius: 2px;
+	height: 50px;
+	color: white;
+	cursor: pointer;
+	padding-top: 11px;
+	margin: 5px;
+}
+
+.file-item:hover {
+	transition: 0.5s;
+	background-color: #33c455;
+}
+</style>
+
+<body data-spy="scroll" data-target=".site-navbar-target"
+	data-offset="300">
+
+
+	<div th:replace="fragments/header :: nav"></div>
+
+
+
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row">
+
+				<div class="col-lg-4 sidebar ftco-animate">
+					<div class="sidebar-box search-box">
+						<form action="#" class="search-form">
+							<div class="form-group">
+								<span class="icon icon-search"></span> <input type="text"
+									onkeyup="updateView()" id="searchQuery" class="form-control"
+									placeholder="Recherche par mots">
+							</div>
+						</form>
+					</div>
+
+
+					<div>
+						<label id="img_category_label" class="field search-list"
+							for="img_category" data-value=""> <span>Type de
+								ressources</span>
+							<div id="institution-types-div" class="psuedo_select"
+								name="img_category">
+								<span class="selected"></span>
+								<ul class="options" id="institution-types">
+								</ul>
+							</div>
+						</label>
+					</div>
+
+
+
+					<!--
+					<div>
+						<label id="img_category_label" class="field search-list"
+							for="img_category" data-value=""> <span>Type de
+								ressource</span>
+							<div id="img_category" class="psuedo_select" name="img_category">
+								<span class="selected"></span>
+								<ul id="ressource-classes" class="options">
+								</ul>
+							</div>
+						</label>
+					</div>
+					  -->
+
+				</div>
+				<!-- Institutions List -->
+				<div class="col-lg-8 ftco-animate" id="institutions-list"></div>
+				<!-- .col-md-8 -->
+
+			</div>
+		</div>
+	</section>
+	<!-- .section -->
+
+
+	<!-- Files modal -->
+	<div class="overlay" id="overlay"></div>
+	<div class="modal" id="modal">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="cls-btn" onclick="closeModal()">
+					<i class="icon icon-times" title="modal"></i>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div id="files_list" class="col-md-4" style="overflow-y: scroll"></div>
+			<div class="col-md-8">
+				<div id="pdfViewer" style="height: 80vh; width: 100%"></div>
+			</div>
+		</div>
+	</div>
+
+	<div th:replace="fragments/footer"></div>
+	<script>
+	var institutionsList = document.getElementById('institutions-list');
+	
+	function displayInstitutions(institutions) {
+		institutionsList.innerHTML = "";
+		institutions.forEach(function (item) {
+			institutionsList.innerHTML += `
+				<div class="row list-item-container">
+						<div class="col-lg-10 col-md-8 col-sm-6">
+							<div class="row">
+								<div class="col-lg-3 col-md-4 col-sm-6">
+									<div class="list-image">
+										<img src=http://localhost:5656/upload/${item.image} alt="Image">
+									</div>
+								</div>
+								<div class="col-lg-9 col-md-8 col-sm-6">
+									<div class="list-details">
+										<a href="#">
+											<h5>${item.nom}</h5>
+										</a>
+										<ul>
+											<li><span class="icon icon-map-marker"></span> <span
+													class="text">${item.region}</span></li>
+											<li><span class="icon icon-caret-right"></span> <span
+													class="text">${item.caracteristiques}</span></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-2 col-md-4 col-sm-6">
+							<div class="ml-auto text-right">
+								<button class="btn btn-primary" onclick="showFiles(${item.id})">
+									<span class="icon icon-files-o"></span>
+								</button>
+							</div>
+						</div>
+						<div>
+							<div class="row">
+								<div class="col-12 list-para">
+									<p>${item.description}</p>
+								</div>
+							</div>
+						</div>
+					</div>
+			`;
+		});
+		
+	}
+		
+		var institutionTypes = document.getElementById('institution-types');
+		institutionTypes.innerHTML = '<li class="option">Tout</li>';
+		classes.forEach( function(item) {
+			institutionTypes.innerHTML += `<li class="option" data-value="${item.id}">${item.nom}</li>`;
+		});
+
+		/*
+		var ressourcesClasses = document.getElementById('ressource-classes');
+		RClasses.forEach( function(item) {
+			ressourcesClasses.innerHTML += `<li class="option" data-value="${item.id}">${item.nom}</li>`;
+		});
+		*/
+
+		// recherche
+		function updateView() {
+			var result = [];
+			var inst = classes.forEach(function(e) { 
+				if ( e.nom == $("#institution-types-div span.selected").html() || $("#institution-types-div span.selected").html() == "" || $("#institution-types-div span.selected").html() == "Tout" )
+					e.ressources.filter(function(e) { if ( checkConditions(e)  ) return e ;  }).forEach(function(i){
+						result.push(i);
+					})
+				})
+			console.log(result);
+			
+			displayInstitutions(result);
+		}
+		
+		
+		$("#institution-types").mouseup(function(){
+			setTimeout(function(){
+				updateView();
+	        }, 500);
+		} )
+		
+		function checkConditions(institution) {
+			if (	institution.description.toLowerCase().includes($('#searchQuery').val().toLowerCase())
+				) return true;
+			else return false;
+		}
+		
+		function showFiles(id) {
+			openModal();
+			$("#files_list").empty();
+			var inst = classes.forEach(function(e) { 
+				e.ressources.forEach(function(i){
+					if(i.id == id)
+						i.documents.forEach(function(doc) {
+							$("#files_list").append(`
+									<div class="file-item row" onclick="showFileInViewer('${doc.chemin}')">
+										<div class="col-md-3">
+											<i class="icon icon-file"></i>
+										</div>
+										<div class="col-md-9">
+											<span id="file-name">${doc.nom}</span>
+									</div>
+							`);
+						});		
+				})
+			})	
+		}
+		
+		function showFileInViewer(path) {
+			PDFObject.embed(path, "#pdfViewer");
+		}
+		
+		function init() {
+			updateView();
+		}
+		
+		
+		init();
+
+	</script>
+
+</body>
+
+</html>

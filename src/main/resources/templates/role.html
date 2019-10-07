@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="fragments/head :: head (title = 'SmartGen - Roles')"></head>
+	
+	<!-- Initilize JS variables from backend data reveived in the view -->
+	
+<body data-spy="scroll" data-target=".site-navbar-target"
+	data-offset="300">
+
+
+	<div th:replace="fragments/header :: nav"></div>
+	<section class="ftco-section">
+		<div class="container-login">
+			<div class="row">
+
+			
+					
+				
+					<div class="text-center tabs-list ">
+						
+						<div class="row">
+							<div class=" col-6 tab " >
+								<a href='/role'>
+									<p class="">
+										Creer un Role
+									</p>
+								</a>
+
+							</div>
+							
+						</div>
+						
+					
+						   <form action="role" method="post">
+							
+							
+							<div class="form-group">
+							  
+							  <input type="text" class="form-control" id="role" name="role" placeholder="Role">
+							  
+							</div>
+						
+							
+							<div class="form-group">
+							  
+							  <textarea rows = "5" cols = "60"  class="form-control" id="permissions" name="permissions" placeholder="Permissions"></textarea>
+							</div>
+							 <br>
+  
+							
+						
+							<button type="submit" class="btn btn-primary">Submit</button>
+						  </form>
+						<hr/>
+						<div>
+							
+
+								<div class="col-12 col-md-4">
+
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-lg-6 signup-img md-none">
+
+				</div>
+
+
+			</div>
+		</div>
+
+		
+	</section>
+
+<div th:replace="fragments/footer"></div>
+	
+
+</body>
+</html>

@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+	<head>
+  <title>SmartGen - Ajouter Demmande</title>
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+
+  <link rel="stylesheet" href="/css/open-iconic-bootstrap.min.css" />
+  <link rel="stylesheet" href="/css/animate.css" />
+
+  <link rel="stylesheet" href="/css/owl.carousel.min.css" />
+  <link rel="stylesheet" href="/css/owl.theme.default.min.css" />
+  <link rel="stylesheet" href="/css/magnific-popup.css" />
+
+  <link rel="stylesheet" href="/css/aos.css" />
+
+  <link rel="stylesheet" href="/css/ionicons.min.css" />
+
+  <link rel="stylesheet" href="/css/flaticon.css" />
+  <link rel="stylesheet" href="/css/icomoon.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/custom-style.css" />
+  <link rel="stylesheet" href="/css/intlTelInput.css" />
+  <link rel="stylesheet" href="/css/nice-select.min.css" />
+  
+  <script src="/js/font-awesome-try.js"></script>
+  
+  
+
+		
+  <link rel="stylesheet" href="/css/formStyle.css" />
+  
+    <!-- Custom css and js  -->
+   <link rel="stylesheet" href="/custom/customcss.css" />
+   
+   <!-- sytles of  multitage autocomplete -->
+  
+
+
+
+
+		
+		<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>
+		<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	
+		<script src="multitag/src/jquery.tagsinput-revisited.js"></script>
+		<link rel="stylesheet" href="multitag/src/jquery.tagsinput-revisited.css" />
+   
+   
+	</head>
+	<body>
+		<div th:replace="fragments/header :: nav"></div>
+		
+		<section class="ftco-section">
+      <div class="demande-form-container">
+        <!-- Multi step form -->
+        <section class="multi_step_form">
+          <form
+            id="msform"
+            enctype="multipart/form-data"
+            action="lancerdemande"
+            method="POST"
+          >
+            <!-- Tittle -->
+            <div class="tittle">
+              <h2>Demander l'accès à  des ressources</h2>
+              <p>
+                Afin de pouvoir acceder aux ressources en toute sécurité et
+                légalité veillez suivre le processus
+              </p>
+            </div>
+            <!-- progressbar -->
+            <ul id="progressbar">
+              <li class="active">
+                Identification du demandeur
+              </li>
+              <li>Choisir les ressources</li>
+              <li>Detail de la demande</li>
+            </ul>
+            <!-- identification field -->
+            <fieldset>
+              <h3>Identification du demandeur</h3>
+              <h6>Veillez vous presenter dans cette partie</h6>
+
+              <div class="form-group">
+                <div class="inputDesc">Votre organisme est :</div>
+                <select class="product_select" name="type_organisme" required>
+                  <option selected>Organisation</option>
+                  <option>Entreprise</option>
+                  <option>Université</option>
+                  <option>Labo de recherche</option>
+                </select>
+              </div>
+              <div class="form-group fg_2">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Nom de l'organisme"
+                  name="nom_organisme"
+                  required
+                />
+              </div>
+              <div class="form-group fg_2">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Raison social de l'organisme"
+                  name="rs_organisme"
+                  required
+                />
+              </div>
+              <div class="form-group fg_2">
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="Email de l'organisme"
+                  name="email_organisme"
+                  required
+                />
+              </div>
+
+              <div class="form-group fg_2">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Adresse de l'organisme"
+                  name="adresse_organisme"
+                  required
+                />
+              </div>
+
+              <div class="form-group fg_2">
+                <input
+                  type="tel"
+                  class="form-control"
+                  placeholder="N° tel de l'organisme"
+                  name="telephone_organisme"
+                  required
+                />
+              </div>
+              <!--
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <input
+                    type="tel"
+                    id="phone"
+                    class="form-control"
+                    placeholder="+880"
+                  />
+                </div>
+                <div class="form-group col-md-6">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="+8801123456789"
+                    required
+                  />
+                </div>
+              </div>-->
+
+              <div class="form-group files fg_3">
+                <label> Document décrivant l'organisme </label>
+                <input
+                  type="hidden"
+                  name="question1"
+                  value="Document décrivant l'organisme"
+                  required
+                />
+                <input
+                  type="file"
+                  class="form-control"
+                  data-max-file-size="200M"
+                  accept=".pdf"
+                  name="document_reponse1"
+                  required
+                />
+              </div>
+
+              <div class="form-group fg_2">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Description de la demande"
+                  name="description"
+                  required
+                />
+              </div>
+              <div class="form-group fg_3">
+                <div class="inputDesc">Vous voulez demander un permis de:</div>
+                <select class="selectpicker w-100" name="type_permis" required>
+                  <option selected>une prospection et collecte</option>
+                  <option>un prélèvement à  but scientifique</option>
+                  <option>un prélèvement à  but commercial</option>
+                </select>
+              </div>
+
+              <!--
+              <div class="done_text">
+                <a href="#" class="don_icon"
+                  ><i class="ion-android-done"></i
+                ></a>
+                <h6>
+                  A secret code is sent to your phone. <br />Please enter it
+                  here.
+                </h6>
+              </div>
+              <div class="code_group">
+                <input type="text" class="form-control" placeholder="0" />
+                <input type="text" class="form-control" placeholder="0" />
+                <input type="text" class="form-control" placeholder="0" />
+                <input type="text" class="form-control" placeholder="0" />
+              </div>-->
+              <button type="button" class="action-button previous_button">
+                Precedent
+              </button>
+              <button type="button" class="next action-button">Suivant</button>
+            </fieldset>
+            <fieldset>
+              <h3>Choix des ressources genetiques voulus</h3>
+              <h6>
+                S'il vous plait veillez selectionner les ressources genetiques
+                que vous voulez y accéder
+              </h6>
+
+              <div class="form-group fg_3">
+                <label
+                  >selectionnez les ressources que vous voulez demander:</label
+                >
+
+		<input id="form-tags-4" name="selected_ressources" type="text" value="">
+              </div>
+
+              <button
+                type="button"
+                class="action-button previous previous_button"
+              >
+                Precedent
+              </button>
+              <button type="button" class="next action-button">Suivant</button>
+            </fieldset>
+            <fieldset>
+              <h3>Detail de la demande</h3>
+              <h6>
+                Veillez justifier votre intention à  utiliser ces ressources
+              </h6>
+              <div class="form-group files fg_3">
+                <label>
+                  Decrivez l'ensemble des informations permettant l'évaluation
+                  de la demande:
+                </label>
+                <input
+                  type="hidden"
+                  name="question2"
+                  value="Decrivez l'ensemble des informations permettant l'évaluation de la demande:"
+                />
+                <input
+                  type="file"
+                  class="form-control"
+                  data-max-file-size="50M"
+                  accept=".pdf"
+                  name="document_reponse2"
+                  required
+                />
+              </div>
+              <div class="form-group files fg_3">
+                <label> Décrivez le but de l'utilisation des ressources:</label>
+                <input
+                  type="hidden"
+                  name="question3"
+                  value="Décrivez le but de l'utilisation des ressources:"
+                />
+                <input
+                  type="file"
+                  class="form-control"
+                  data-max-file-size="50M"
+                  accept=".pdf"
+                  name="document_reponse3"
+                  required
+                />
+              </div>
+              <div class="form-group files fg_3">
+                <label>
+                  Engagement légalisé de rendre compte des résultats
+                </label>
+                <input
+                  type="hidden"
+                  name="question4"
+                  value="Engagement légalisé de rendre compte des résultats"
+                />
+                <input
+                  type="file"
+                  class="form-control"
+                  data-max-file-size="50M"
+                  accept=".pdf"
+                  name="document_reponse4"
+                  required
+                />
+              </div>
+
+              <button
+                type="button"
+                class="action-button previous previous_button"
+              >
+                Precedent
+              </button>
+              <button type="Submit" class="action-button">Confirmer</button>
+            </fieldset>
+          </form>
+        </section>
+        <!-- End Multi step form -->
+      </div>
+    </section>
+
+		
+			
+			
+
+		<div th:replace="fragments/footer_demmande"></div>
+		 <script>
+      (function($) {
+        "use strict";
+
+        //* Form js
+        function verificationForm() {
+          //jQuery time
+          var current_fs, next_fs, previous_fs; //fieldsets
+          var left, opacity, scale; //fieldset properties which we will animate
+          var animating; //flag to prevent quick multi-click glitches
+
+          $(".next").click(function() {
+            if (animating) return false;
+            animating = true;
+
+            current_fs = $(this).parent();
+            next_fs = $(this)
+              .parent()
+              .next();
+
+            //activate next step on progressbar using the index of next_fs
+            $("#progressbar li")
+              .eq($("fieldset").index(next_fs))
+              .addClass("active");
+
+            //show the next fieldset
+            next_fs.show();
+            //hide the current fieldset with style
+            current_fs.animate(
+              {
+                opacity: 0
+              },
+              {
+                step: function(now, mx) {
+                  //as the opacity of current_fs reduces to 0 - stored in "now"
+                  //1. scale current_fs down to 80%
+                  scale = 1 - (1 - now) * 0.2;
+                  //2. bring next_fs from the right(50%)
+                  left = now * 50 + "%";
+                  //3. increase opacity of next_fs to 1 as it moves in
+                  opacity = 1 - now;
+                  current_fs.css({
+                    transform: "scale(" + scale + ")",
+                    position: "absolute"
+                  });
+                  next_fs.css({
+                    left: left,
+                    opacity: opacity
+                  });
+                },
+                duration: 800,
+                complete: function() {
+                  current_fs.hide();
+                  animating = false;
+                },
+                //this comes from the custom easing plugin
+                easing: "easeInOutBack"
+              }
+            );
+          });
+
+          $(".previous").click(function() {
+            if (animating) return false;
+            animating = true;
+
+            current_fs = $(this).parent();
+            previous_fs = $(this)
+              .parent()
+              .prev();
+
+            //de-activate current step on progressbar
+            $("#progressbar li")
+              .eq($("fieldset").index(current_fs))
+              .removeClass("active");
+
+            //show the previous fieldset
+            previous_fs.show();
+            //hide the current fieldset with style
+            current_fs.animate(
+              {
+                opacity: 0
+              },
+              {
+                step: function(now, mx) {
+                  //as the opacity of current_fs reduces to 0 - stored in "now"
+                  //1. scale previous_fs from 80% to 100%
+                  scale = 0.8 + (1 - now) * 0.2;
+                  //2. take current_fs to the right(50%) - from 0%
+                  left = (1 - now) * 50 + "%";
+                  //3. increase opacity of previous_fs to 1 as it moves in
+                  opacity = 1 - now;
+                  current_fs.css({
+                    left: left
+                  });
+                  previous_fs.css({
+                    transform: "scale(" + scale + ")",
+                    opacity: opacity
+                  });
+                },
+                duration: 800,
+                complete: function() {
+                  current_fs.hide();
+                  animating = false;
+                },
+                //this comes from the custom easing plugin
+                easing: "easeInOutBack"
+              }
+            );
+          });
+
+          $(".submit").click(function() {
+            return false;
+          });
+        }
+
+        //* Add Phone no select
+        function phoneNoselect() {
+          if ($("#msform").length) {
+            $("#phone").intlTelInput();
+            $("#phone").intlTelInput("setNumber", "+880");
+          }
+        }
+        //* Select js
+        function nice_Select() {
+          if ($(".product_select").length) {
+            $("select").niceSelect();
+            $(".selectpicker").selectpicker();
+          }
+        }
+
+        verificationForm();
+        phoneNoselect();
+        nice_Select();
+      })(jQuery);
+
+     
+    </script>
+		<script type="text/javascript">
+		
+		
+			$(function() {
+				var ressources;
+
+				$.ajax({
+				    'async': false,
+				    'type': "GET",
+				    'global': false,
+				    'dataType': 'JSON',
+				    'url': "http://localhost:5656/api/ressources",
+				    'success': function (data) {
+				    	ressources = data;
+				    }
+				});
+				
+				var ressources_name = [];
+				ressources.forEach(function(item){
+					ressources_name.push(item.nom);
+				});
+				
+
+
+				$('#form-tags-4').tagsInput({
+					'autocomplete': {
+						source:ressources_name
+					}
+        });
+        
+
+			
+			});
+		</script>
+		
+		<script type="text/javascript">
+		
+		$(document).ready(function(){  
+			
+		
+
+		});  
+		</script>
+	</body>
+	
+	
+</html>
+

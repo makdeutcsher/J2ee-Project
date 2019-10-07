@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="fragments/head :: head (title = 'SmartGen - Login')"></head>
+
+<body data-spy="scroll" data-target=".site-navbar-target"
+	data-offset="300">
+
+
+	
+	<section class="ftco-section">
+		<div class="container-login">
+			<div class="row">
+
+				<div class="col-12 col-lg-12 login-signup-right">
+					<div class="text-center">
+						<a href="/"><img id="logo-img" src="images/logo_in_line.svg" width="110"   alt=""/> </a>
+					</div>
+					<br />
+					<div class="text-center tabs-list ">
+						<div class="text-center">
+							<small style="font-size:14px"> Create your account <strong>now</strong>!  </small>
+						</div>
+						<div class="row">
+							<div class=" col-6 tab " >
+								<a href='/login'>
+									<p class="">
+										Login
+									</p>
+								</a>
+
+							</div>
+							<div class=" col-6 tab tab-active">
+								<a href="/signup">
+									<p class="">
+										Register
+									</p>
+								</a>
+							</div>
+						</div>
+
+						
+						<div id="email_err" style="font-size:10px ; width:50%" class="d-none mx-auto mt-3 " >
+							<div  class="alert alert-danger" role="alert">
+								email already existed
+							</div>
+						</div>
+						
+						
+					
+						   <form action="signup" method="post">
+							<div class="form-group">
+							  
+							  <input type="text" class="form-control" id="nom" name="nom" aria-describedby="emailHelp" placeholder="Nom">
+							  
+							</div>
+							
+							<div class="form-group">
+							  
+							  <input type="text" class="form-control" id="prenom" name="prenom" aria-describedby="emailHelp" placeholder="Prenom">
+							  
+							</div>
+							<div class="form-group">
+							  
+							  <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Email">
+							  
+							</div>
+							<div class="form-group">
+							  
+							  <input type="password" class="form-control" id="password" name="password" placeholder="Mot de pass">
+							</div>
+
+							<div class="form-group">
+								
+								<input type="password" class="form-control" id="c_password" name="c_password" placeholder="Confrimer mot de pass">
+							  </div>
+						
+							<button type="submit" class="btn btn-primary">Submit</button>
+						  </form>
+						<hr/>
+						<div>
+							<div class="row" style="font-size:10px"}}>
+								<div class="col-12 col-md-8">
+									© SmartGen 2019 -All right reserved
+								</div>
+
+								<div class="col-12 col-md-4">
+
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-lg-6 signup-img md-none">
+
+				</div>
+
+
+			</div>
+		</div>
+
+		
+	</section>
+
+<div th:replace="fragments/footer"></div>
+	
+	<script  th:inline="javascript">
+	/*<![CDATA[*/
+		
+		$(document).ready(function(){  
+			var emailError =[[${error1}]] 	
+			if (emailError!=null){
+				console.log(emailError)
+				$("#email_err").removeClass("d-none");
+			}
+		});  
+	
+	
+	/*]]>*/
+	
+	</script>
+</body>
+</html>

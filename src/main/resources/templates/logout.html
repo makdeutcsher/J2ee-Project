@@ -1,0 +1,21 @@
+ 
+ <!DOCTYPE html>
+<html lang="en">
+<head
+	th:replace="fragments/head :: head (title = 'SmartGen - Accès et Partage des Avantages')"></head>
+<body data-spy="scroll" data-target=".site-navbar-target"
+	data-offset="300">
+	
+	logout
+
+ <script  th:inline="javascript">
+    
+	window.localStorage.removeItem('loggedin');
+	window.localStorage.removeItem('nom');
+	window.localStorage.removeItem('prenom');
+	window.location.replace("/");
+	</script>
+	
+</body>
+</html>
+

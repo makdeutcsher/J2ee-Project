@@ -1,0 +1,90 @@
+<nav
+  class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target"
+  id="ftco-navbar"
+>
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <img src="images/logo_in_line.svg" alt="" width="127" />
+    </a>
+    <button
+      class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle"
+      type="button"
+      data-toggle="collapse"
+      data-target="#ftco-nav"
+      aria-controls="ftco-nav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="oi oi-menu"></span> Menu
+    </button>
+
+    <div class="collapse navbar-collapse" id="ftco-nav">
+      <ul class="navbar-nav nav ml-auto">
+        <li class="nav-item">
+          <a href="/" class="nav-link"><span>Accueil </span></a>
+        </li>
+        <li class="nav-item">
+          <a href="/institutions" class="nav-link"><span>Institutions</span></a>
+        </li>
+        <li class="nav-item">
+          <a href="/ressources" class="nav-link"
+            ><span>Ressource Genetiques</span></a
+          >
+        </li>
+        
+        <li class="nav-item">
+          <a href="/lois" class="nav-link"
+            ><span>Lois et Reglement</span></a
+          >
+        </li>
+        <li class="nav-item">
+          <a href="/glossaire" class="nav-link"><span>Glossaire</span></a>
+        </li>
+        <li class="nav-item">
+          <a href="/nagoya" class="nav-link"><span>Nagoya</span></a>
+        </li>
+
+        <li class="nav-item">
+          <a href="#" class="nav-link"><span></span></a>
+        </li>
+      </ul>
+      <div id="user_logged" class="dropdown show nav-item d-none">
+        <a
+          id="user_name"
+          class="btn btn-secondary dropdown-toggle"
+          href="#"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          <span></span>
+        </a>
+
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <a id="admin_link" class="dropdown-item d-none" href="/admin/ressources">
+        <span> <i class="fal fa-tachometer-slowest"></i></span>
+        Tableau de board
+               
+        
+        </a>
+          <a class="dropdown-item" href="/demandes/" id="mes_demandes">
+          <span> <i class="fal fa-copy"></i></span>
+          Mes demandes</a>
+          <a id="ressource_demmand_link" class="dropdown-item" href="/demandeForm">
+          <span> <i class="fal fa-file-medical"></i></span>
+          Demander Ressource</a>
+          <a id="logout_link" class="dropdown-item" href="/logout">
+          <span> <i class="fal fa-sign-out"></i></span>
+          Deconnecter</a>
+        </div>
+      </div>
+
+      <a href="/login"
+        ><button id="signup_btn" type="submit" class="btn btn-primary">
+          Connecter
+        </button>
+      </a>
+    </div>
+  </div>
+</nav>

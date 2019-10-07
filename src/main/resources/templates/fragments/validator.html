@@ -1,0 +1,81 @@
+<script  th:inline="javascript">
+    
+	/*<![CDATA[*/
+		
+		var loggedin = window.localStorage.getItem('loggedin');
+			var user_role = window.localStorage.getItem('user_role');
+			if (loggedin=="true"){
+				
+				console.log(user_role)
+				if(user_role=="Createur"){
+					
+					console.log ("Hello from Creatpr")
+					
+				/*	var add_ressource_btn = document.getElementById("btn_add_ressource");
+					add_ressource_btn.classList.add("d-none");*/
+					
+					var demandes_tab = document.getElementById("demandes_tab");
+					demandes_tab.classList.add("d-none");
+					
+					apa_document_tap = document.getElementById("apa_document_tab");
+					apa_document_tap.classList.add("d-none");
+					
+				}
+				
+				if(user_role=="Validateur"){
+					
+					
+					
+					
+					var apa_document_tap = document.getElementById("apa_document_tab");
+					apa_document_tap.classList.add("d-none");
+					
+					var roles_tab = document.getElementById("roles_tab");
+					roles_tab.classList.add("d-none");
+					
+					var users_tab = document.getElementById("users_tab");
+					users_tab.classList.add("d-none");
+					
+				}
+				
+				
+			if(user_role=="GearantApa"){
+					
+					
+					
+				var demandes_tab = document.getElementById("demandes_tab");
+				demandes_tab.classList.add("d-none");
+					
+					
+					var roles_tab = document.getElementById("roles_tab");
+					roles_tab.classList.add("d-none");
+					
+					var users_tab = document.getElementById("users_tab");
+					users_tab.classList.add("d-none");
+					
+				}
+			
+			
+			if(user_role=="Editeur"){
+				
+				
+				
+				var demandes_tab = document.getElementById("demandes_tab");
+				demandes_tab.classList.add("d-none");
+					
+					
+					var roles_tab = document.getElementById("roles_tab");
+					roles_tab.classList.add("d-none");
+					
+					var users_tab = document.getElementById("users_tab");
+					users_tab.classList.add("d-none");
+					
+				}
+			
+
+			}
+
+	
+	/*]]>*/
+	
+	</script>

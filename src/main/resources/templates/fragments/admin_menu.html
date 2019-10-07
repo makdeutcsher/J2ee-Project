@@ -1,0 +1,65 @@
+<div class="sidebar" data-color="green" data-background-color="white"
+	data-image="/images/admin_bg.jpg">
+	<!--
+         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+ 
+         Tip 2: you can also add an image using data-image tag
+     -->
+	<div class="logo">
+		<a href="/" class="simple-text logo-normal">
+			<img src="/images/logo_in_line.svg" alt="">
+		</a>
+	
+		
+	</div>
+	
+	
+	
+	<div class="sidebar-wrapper">
+		<ul class="nav">
+			
+			<li class="nav-item "><a class="nav-link"
+				href="/"> <i class="material-icons">home</i>
+					<p>Accueil</p>
+			</a></li>
+			
+			<li class="nav-item "><a class="nav-link"
+				href="/admin/institutions"> <i class="material-icons">apartment</i>
+					<p>Institutions</p>
+			</a></li>
+			
+			
+			<li class="nav-item "><a class="nav-link"
+				href="/admin/ressources"> <i class="material-icons">spa</i>
+					<p>Ressources</p>
+			</a></li>
+			
+			<li id="demandes_tab" class="nav-item"><a class="nav-link"
+				href="/admin/demandes"> <i class="material-icons">contact_mail</i>
+					<p>Demandes</p>
+			</a></li>
+			
+			<li id="roles_tab" class="nav-item"><a href="/admin/roles" class="nav-link"> 
+			<i class="material-icons">supervised_user_circle</i><span>Roles</span></a></li>
+			
+			<li id="users_tab" class="nav-item"><a href="/admin/permissions" class="nav-link">
+			<i class="material-icons">group</i><span>Utilisateurs</span></a></li>
+			
+			<li id="apa_document_tab" class="nav-item"><a class="nav-link" href="/admin/doc_apa">
+					<i class="material-icons">file_copy</i>
+					<p>Documents APA</p>
+			</a></li>
+			<hr/>
+			<li  class="nav-item"><a class="nav-link" href="/logout">
+					<i class="material-icons">logout</i>
+					<p>Deconnecter</p>
+			</a></li>
+			
+			
+		</ul>
+	</div>
+</div>
+<div th:replace="fragments/validator"></div>
+
+
+

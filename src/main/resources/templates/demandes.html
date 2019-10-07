@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head
+    th:replace="fragments/head :: head (title = 'SmartGen - Accès et Partage des Avantages')"
+  ></head>
+  <!-- Initilize JS variables from backend data reveived in the view -->
+  <script th:inline="javascript">
+    /*<![CDATA[*/
+    var demandes = [[${mesDemandes}]];
+    console.log(demandes);
+
+    /*]]>*/
+  </script>
+
+  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+    <div th:replace="fragments/header :: nav"></div>
+
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-12" style="text-align: center;">
+            <h2>Mes demandes de permis</h2>
+          </div>
+          <!-- Institutions List -->
+          <div class="col-12 ftco-animate" id="demandes-list"></div>
+          <!-- .col-md-8 -->
+        </div>
+      </div>
+    </section>
+    <!-- .section -->
+
+    <div th:replace="fragments/footer"></div>
+    <script>
+      var demandesList = document.getElementById("demandes-list");
+
+      function displayInstitutions(demandes) {
+        demandesList.innerHTML = "";
+        demandes.forEach(function(item) {
+          demandesList.innerHTML += `
+				<div class="row list-item-container">
+						<div class="col-lg-10 col-md-8 col-sm-6">
+							<div class="row">
+								
+								<div class="col-lg-12 col-md-8 col-sm-6">
+									<div class="list-details">
+										<a href="#">
+											<h5>${item.type_permis}</h5>
+										</a>
+										<ul>
+											<li><span class="icon icon-map-marker"></span> <span
+                                                    class="text">${item.nom_organisme}</span></li>
+                                                    <li><span class="icon icon-map-marker"></span> <span
+													class="text">${item.adresse_organisme}</span></li>
+											<li><span class="icon icon-phone"></span> <span
+													class="text">${item.telephone_organisme}</span></li>
+											<li><span class="icon icon-envelope"></span> <span
+													class="text">${item.email_organisme}</span></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-2 col-md-4 col-sm-6">
+							<div class="ml-auto text-right">
+								<a class="btn py-1 px-2 btn-primary state">${item.etat}</a>
+							</div>
+						</div>
+						<div>
+							<div class="row">
+								<div class="col-12 list-para">
+									<p>${item.description} Lorem ipsum dolor sit amet, consectetur adipisicing
+										elit. Ducimus itaque, autem necessitatibus voluptate quod
+										mollitia delectus aut, sunt placeat nam vero culpa sapiente
+										consectetur similique, inventore eos fugit cupiditate numquam!</p>
+								</div>
+							</div>
+						</div>
+					</div>
+			`;
+        });
+      }
+      /*
+      var institutionTypes = document.getElementById("institution-types");
+      institutionTypes.innerHTML = '<li class="option">Tout</li>';
+      domaines.forEach(function(item) {
+        institutionTypes.innerHTML += `<li class="option" data-value="${item.id}">${item.domaine}</li>`;
+      });
+*/
+      /*
+		var ressourcesClasses = document.getElementById('ressource-classes');
+		RClasses.forEach( function(item) {
+			ressourcesClasses.innerHTML += `<li class="option" data-value="${item.id}">${item.nom}</li>`;
+		});
+		*/
+
+      // recherche
+      function updateView() {
+        var result = [];
+        var inst = domaines.forEach(function(e) {
+          if (
+            e.domaine == $("#institution-types-div span.selected").html() ||
+            $("#institution-types-div span.selected").html() == "" ||
+            $("#institution-types-div span.selected").html() == "Tout"
+          )
+            e.instituitions
+              .filter(function(e) {
+                if (checkConditions(e)) return e;
+              })
+              .forEach(function(i) {
+                result.push(i);
+              });
+        });
+        console.log(result);
+
+        displayInstitutions(result);
+      }
+
+      $("input[type=radio][name=r]").change(function() {
+        updateView();
+      });
+
+      $("#institution-types").mouseup(function() {
+        setTimeout(function() {
+          updateView();
+        }, 500);
+      });
+
+      function checkConditions(institution) {
+        var statut =
+          $("input[name=r]:checked").val() == institution.statut ||
+          $("input[name=r]:checked").val() == 3
+            ? true
+            : false;
+        if (
+          statut &&
+          institution.nom_institution.toLowerCase().includes(
+            $("#searchQuery")
+              .val()
+              .toLowerCase()
+          )
+        )
+          return true;
+        else return false;
+      }
+
+      function init() {
+        updateView();
+      }
+
+      displayInstitutions(demandes);
+      //init();
+    </script>
+  </body>
+</html>

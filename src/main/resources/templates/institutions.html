@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head :: head (title = 'SmartGen - Institutions')"></head>
+
+<!-- Initilize JS variables from backend data reveived in the view -->
+<script th:inline="javascript">
+	/*<![CDATA[*/
+	var institutions = [[${ institutions }]];
+	var domaines = [[${ domaines }]];
+	console.log(domaines);
+
+	/*]]>*/
+</script>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+
+	<div th:replace="fragments/header :: nav"></div>
+	<section class="ftco-section">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="text-center">
+					<span class="">Filter</span>
+				</div>
+				<div class="form-group">
+					<input type="text" placeholder="Rechercher" class="form-control" />
+				</div>
+				<div class="form-group">
+					<lable for="instituts-list">Type d'institutions</lable>
+					</br> <select id="instituts-list" class="form-control">
+						<option>Pharmaceutiques</option>
+						<option>Medicinales</option>
+						<option>Traditionnelles</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<input type="radio" value="Publique" name="institut-type" class="radio-control"> Publique </input>
+					</br> <input type="radio" value="Priv�" name="institut-type" class="radio-control">
+					Priv� </input>
+				</div>
+				<div class="form-group">
+					<lable for="ressources-list">Type de ressources</lable>
+					</br> <select id="ressources-list" class="form-control">
+						<option>Grains</option>
+						<option>Plantes</option>
+						<option>Autres</option>
+					</select>
+				</div>
+			</div>
+			<div class="col-md-8">
+				<div class="text-center">
+					<span class="">Institutions</span>
+				</div>
+				<div id="institutions-list"></div>
+			</div>
+		</div>
+	</section>
+
+	<div th:replace="fragments/footer"></div>
+	<script>
+
+		var institutionsList = document.getElementById('institutions-list');
+		console.log(institutions);
+		institutions.forEach(function (item) {
+			institutionsList.innerHTML += `
+				<div class="card">
+					<div class="row">
+						<div class="col-md-3">
+							<img src="images/green-tea.png" style="height: 100px; width: 100px" alt="image" />
+						</div>
+						<div class="col-md-6">
+							<span>${item.nom_institution}</span></br> <span> <i
+								class="fa fa-address"></i> <span>${item.adresse}</span>
+							</span></br> <span> <i class="fa fa-telephone)"></i> <span>${item.tel}</span>
+							</span></br> <span> <i class="fa fa-email"></i> <span>${item.email}</span>
+							</span>
+						</div>
+						<div class="col-md-3">
+							<button class="btn btn-primary">${item.statut}</button>
+						</div>
+					</div>
+				</div>
+			`;
+		});
+
+
+	</script>
+</body>
+
+</html>

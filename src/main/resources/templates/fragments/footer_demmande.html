@@ -1,0 +1,185 @@
+<div>
+  <footer class="ftco-footer ftco-section">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-md">
+          <div class="ftco-footer-widget mb-4">
+            <h2 class="ftco-heading-2">A Propos</h2>
+            <p>
+              Les ressources génétiques sont la fraction de la diversité génétique générale du vivant dont les hommes font
+usage par la domestication et la sélection.
+            </p>
+            <ul
+              class="ftco-footer-social list-unstyled float-md-left float-lft mt-5"
+            >
+              <li class="ftco-animate">
+                <a href="#"><span class="icon-twitter"></span></a>
+              </li>
+              <li class="ftco-animate">
+                <a href="#"><span class="icon-facebook"></span></a>
+              </li>
+              <li class="ftco-animate">
+                <a href="#"><span class="icon-instagram"></span></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="ftco-footer-widget mb-4 ml-md-4">
+            <h2 class="ftco-heading-2">Liens</h2>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#"
+                  ><span class="icon-long-arrow-right mr-2"></span>Acceuil</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><span class="icon-long-arrow-right mr-2"></span>A propos</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><span class="icon-long-arrow-right mr-2"></span>Services</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><span class="icon-long-arrow-right mr-2"></span>Projects</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><span class="icon-long-arrow-right mr-2"></span>Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="ftco-footer-widget mb-4">
+            <h2 class="ftco-heading-2">Ressources</h2>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#"
+                  ><span class="icon-long-arrow-right mr-2"></span>ressources génétiques forestiéres et relatives aux plantes aromatiques et médicinales</a>
+              </li>
+              <li>
+                <a href="#"
+                  ><span class="icon-long-arrow-right mr-2"></span>ressources génétiques pour léalimentation et léagriculture</a>
+              </li>
+              <li>
+                <a href="#"
+                  ><span class="icon-long-arrow-right mr-2"></span>ressources génétiques marines</a>
+              </li>
+              <li> 
+                <a href="#"
+                  ><span class="icon-long-arrow-right mr-2"></span>ressources génétiques de la faune sauvage et domestique</a>
+              </li>
+              <li>
+                <a href="#"
+                  ><span class="icon-long-arrow-right mr-2"></span>ressources génétiques des microorganismes</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="ftco-footer-widget mb-4">
+            <h2 class="ftco-heading-2">Vous avez une Question?</h2>
+            <div class="block-23 mb-3">
+              <ul>
+                <li>
+                  <span class="icon icon-map-marker"></span
+                  ><span class="text"
+                    >Bp 68 M oued smar 16800,
+                    Algérie</span
+                  >
+                </li>
+                <li>
+                  <a href="#"
+                    ><span class="icon icon-phone"></span
+                    ><span class="text">+211658431</span></a
+                  >
+                </li>
+                <li>
+                  <a href="#"
+                    ><span class="icon icon-envelope"></span
+                    ><span class="text">apa@smartgen.com</span></a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;
+            <script>
+              document.write(new Date().getFullYear());
+            </script>
+            All rights reserved | Ce site est développé par
+            <a href="https://smartgen.com" target="_blank">Smartgen</a>
+   
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+
+
+  <script src="/js/popper.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/jquery.easing.1.3.js"></script>
+  <script src="/js/jquery.waypoints.min.js"></script>
+  <script src="/js/jquery.stellar.min.js"></script>
+  <script src="/js/owl.carousel.min.js"></script>
+  <script src="/js/jquery.magnific-popup.min.js"></script>
+  <script src="/js/aos.js"></script>
+  <script src="/js/jquery.animateNumber.min.js"></script>
+  <script src="/js/scrollax.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="/js/google-map.js"></script>
+  <script src="/js/intlTelInput.js"></script>
+
+  <script src="/js/jquery.nice-select.min.js"></script>
+  <script src="/js/main.js"></script>
+  
+  <!-- Custom Js  -->
+   <script src="/custom/customjs.js"></script>
+   
+    <script  th:inline="javascript">
+    
+    /*<![CDATA[*/
+	
+	$(document).ready(function(){		
+		
+		var loggedin = window.localStorage.getItem('loggedin');
+		var username = window.localStorage.getItem('nom');
+		var user_role = window.localStorage.getItem('user_role');
+		if (loggedin=="true"){
+			$("#user_name span").text(username);
+			$("#signup_btn").addClass("d-none");
+			$("#user_logged").removeClass("d-none");
+			if(user_role!="Normal"){
+				$("#admin_link").removeClass("d-none");
+				$("#mes_demandes").addClass("d-none");
+				$("#ressource_demmand_link").addClass("d-none");
+
+			}
+		}
+		
+
+	
+});  
+
+
+/*]]>*/
+	
+	</script>
+</div>

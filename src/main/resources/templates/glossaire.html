@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head
+	th:replace="fragments/head :: head (title = 'SmartGen - Accès et Partage des Avantages')"></head>
+	<!-- Initilize JS variables from backend data reveived in the view -->
+<script th:inline="javascript">
+	/*<![CDATA[*/
+	var glossaires = [[${ glossaires }]];
+	
+	console.log(glossaires);
+
+	/*]]>*/
+</script>
+	
+  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+  
+  
+	  
+	  
+   	<div th:replace="fragments/header :: nav"></div>
+	  
+	  <section class="ftco-section testimony-section" id="testimony-section">
+      <div class="container">
+        <div class="row justify-content-center pb-3">
+          <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
+            <h2 class="mb-4">Glossaire</h2>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+   
+	  
+	<section class="glossary-section" id="glossary-section">
+    	<div class="container">
+    	<form action="#" class="search-form">
+                <div class="form-group">
+                  <span class="icon icon-search"></span>
+                  <input type="text" id="myInput" onkeyup="myFunction()" class="form-control" placeholder="Type a keyword and hit enter">
+                </div>
+              </form>
+              
+    		
+			<ul id="myUL" class="row">
+			 
+			  
+			   
+			  
+			  
+		  
+			</ul>
+			
+    	</div>
+    </section>
+
+     
+    
+    
+     
+		
+
+    
+		
+
+  
+    
+  
+
+  
+
+
+  <div th:replace="fragments/footer"></div>
+ 
+
+<script>
+
+var glossairesList = document.getElementById('myUL');
+glossairesList.innerHTML = "";
+glossaires.forEach(function (item) {
+glossairesList.innerHTML += `
+	 <li class="col-6">
+	  <div class="glossary-item-wrapper">
+	  <a href="#">${item.name}</a>
+	  <p> ${item.description}
+	  	 </p>
+	  </div>
+	  
+	  </li>
+
+`;
+});
+
+
+
+function myFunction() {
+  // Declare variables
+  var input, filter, ul, li, a, i, txtValue;
+  input = document.getElementById('myInput');
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("myUL");
+  li = ul.getElementsByTagName('li');
+
+  // Loop through all list items, and hide those who don't match the search query
+  for (i = 0; i < li.length; i++) {
+    a = li[i].getElementsByTagName("a")[0];
+    txtValue = a.textContent || a.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
+
+
+
+</script>
+
+ 
+  </body>
+</html>
